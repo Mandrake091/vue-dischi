@@ -24,13 +24,16 @@ export default {
 
 <style lang="scss" scoped>
 @import "./src/assets/style/general.scss";
+
 .col{
-flex: 1 0 18%;;
+    min-width: 150px;
+    box-shadow: 5px 10px 20px #0000006b;
 }
 div{
     overflow: hidden;
     color: $bg-color;
     background-color: $bg-navbar;
+   
 }
 h4{
     font-size: $main-font-size;
@@ -40,5 +43,4 @@ p{
     color: $text-secondary;
     font-size: $small-font-size;
 }
-
 </style>

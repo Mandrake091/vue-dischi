@@ -2,7 +2,7 @@
 <section>
     <app-loader v-if="loading"/>
     <div class="row w-75 justify-content-center py-4 m-auto">
-        <div class="col-4 col-md-3 col-lg-2"
+        <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0"
         v-for="(album, index) in albumList" :key="index">
         <app-card :item="album"/>
         </div>
@@ -44,9 +44,6 @@ export default {
 <style lang="scss" scoped>
 @import "./src/assets/style/general.scss";
 
-section{
-    background-color: $bg-main;
-}
 .row{
     column-gap: 20px;
     row-gap: 20px;

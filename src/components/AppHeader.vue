@@ -19,5 +19,6 @@ img{
 header{
     background-color: $bg-navbar;
     height: 50px;
+    box-shadow: 5px 10px 20px #0000006b;
 }
 </style>
