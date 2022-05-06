@@ -1,7 +1,7 @@
 <template>
 <section>
     <app-loader v-if="loading"/>
-    <div class="row w-75 justify-content-center py-4 m-auto">
+    <div class="row w-75 justify-content-center py-5 m-auto">
         <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0"
         v-for="(album, index) in albumList" :key="index">
         <app-card :item="album"/>
