@@ -1,8 +1,8 @@
 <template>
 <section>
     <app-loader v-if="loading"/>
-    <div class="row">
-        <div class="col-6 col-md-4 col-lg-2"
+    <div class="row w-75 justify-content-center py-4 m-auto">
+        <div class="col-4 col-md-3 col-lg-2"
         v-for="(album, index) in albumList" :key="index">
         <app-card :item="album"/>
         </div>
@@ -47,6 +47,9 @@ export default {
 section{
     background-color: $bg-main;
 }
-
+.row{
+    column-gap: 20px;
+    row-gap: 20px;
+}
 
 </style>

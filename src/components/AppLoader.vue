@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="loader">
 	<div class="mosaic-loader">
     <div class="cell d-0"></div>
     <div class="cell d-1"></div>
@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 $--p-1: #d4aee0;
 $--p-2: #8975b4;
 $--p-3: #64518a;
@@ -72,8 +72,12 @@ $colors: (
   $--y-4,
 );
 
-div{
-  margin: 0 auto;
+.loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
 }
 
 .mosaic-loader {

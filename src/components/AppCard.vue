@@ -1,9 +1,14 @@
 <template>
-<div>
-    <img class="img-fluid" :src="item.poster" alt="">
-    <h4 class="fs-5 text-center fw-bold">{{item.title}}</h4>
-    <p>{{item.author}}</p>
-    <p>{{item.year}}</p>
+<div class="col text-center h-100 d-flex flex-column align-items-center justify-content-between">
+    <div>
+     <img class="w-100 p-1" :src="item.poster" alt="">
+    <h4 class="text-center fw-bold p-2 text-uppercase">{{item.title}}</h4>   
+    </div>
+    <div>
+        <p class="px-2 m-0">{{item.author}}</p>
+        <p class="px-2">{{item.year}}</p>    
+    </div>
+   
 </div>
   
 </template>
@@ -14,18 +19,26 @@ export default {
     props:{
         item:Object
     }
-
 }
 </script>
 
 <style lang="scss" scoped>
 @import "./src/assets/style/general.scss";
+.col{
+flex: 1 0 18%;;
+}
 div{
+    overflow: hidden;
     color: $bg-color;
     background-color: $bg-navbar;
 }
+h4{
+    font-size: $main-font-size;
+    text-overflow: ellipsis;
+}
 p{
-    text-align: center;
+    color: $text-secondary;
+    font-size: $small-font-size;
 }
 
 </style>
