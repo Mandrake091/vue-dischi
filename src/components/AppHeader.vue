@@ -1,6 +1,7 @@
 <template>
-    <header>
+    <header class="d-flex justify-content-between align-items-center">
         <img class="py-2" src="/images/logo.png" alt="">
+        
     </header>
 </template>
 

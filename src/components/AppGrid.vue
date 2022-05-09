@@ -1,9 +1,12 @@
 <template>
-<section>
+<section> 
     <app-loader v-if="loading"/>
-    <div class="row w-75 justify-content-center py-5 m-auto">
+ 
+   <app-select @performSearch="mySearch" :genreList="genre"/>
+    <div class="row w-75 justify-content-center py-4 m-auto">
+        
         <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0"
-        v-for="(album, index) in albumList" :key="index">
+        v-for="(album, index) in filteredAlbumList" :key="index">
         <app-card :item="album"/>
         </div>
     </div>
@@ -15,29 +18,55 @@
 import axios from 'axios';
 import AppCard from './AppCard.vue'
 import AppLoader from './AppLoader.vue';
+import AppSelect from './AppSelect.vue';
 
 export default {
     name: "AppGrid",
-    components: { AppCard, AppLoader },
+    components: { AppCard, AppLoader, AppSelect },
     data(){
         return {
             albumList:[],
             api:'https://flynn.boolean.careers/exercises/api/array/music',
-            loading:false
+            loading:false,
+            genre:[],
+            searchText:""
         }
     },
-    mounted(){
+    methods:{
+        mySearch(text){
+            this.searchText = text;
+        }
+        
+    },
+       computed:{
+        filteredAlbumList(){
+            if (this.searchText === '') {
+                return this.albumList;
+        }
+        return this.albumList.filter((item)=>{
+            return item.genre === this.searchText
+        })
+    }
+},
+    created(){
         this.loading = true;
         setTimeout(()=>{
+            this.loading = false
             axios.get(this.api).then((res)=>{
             this.albumList = res.data.response;
-            this.loading = false
+            this.albumList.forEach((el)=>{
+                if(!this.genre.includes(el.genre)){
+                    this.genre.push(el.genre)
+                }
+            })
             console.log(this.albumList)
+            console.log(this.genre)
         }).catch((error) => {
             console.log(error)
         }) 
         },1000)
-    }    
+    },    
+ 
 }
 </script>
 
