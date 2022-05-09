@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="row pt-4 justify-content-center align-items-center">
-            <div class="col-4">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <select 
  class="form-select form-select-sm text-center m-auto" aria-label=".form-select-sm example"
  @change="changeSelect"
@@ -13,7 +13,7 @@
   v-for="(authors, index) in authorsList" :key="index">{{authors}}</option>
 </select>
             </div>
-            <div class="col-4">
+            <div class="col-6 col-md-4 col-lg-3 col-xl-2">
                 <select 
  class="form-select form-select-sm text-center m-auto" aria-label=".form-select-sm example"
  @change="changeSelect"

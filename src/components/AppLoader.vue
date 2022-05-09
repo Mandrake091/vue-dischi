@@ -73,6 +73,7 @@ $colors: (
 );
 
 .loader{
+  background: rgba(0, 0, 0, 0.545);
   position: absolute;
   top: 50%;
   left: 50%;

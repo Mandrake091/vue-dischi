@@ -4,7 +4,6 @@
  
    <app-select @performSearch="mySearch" :genreList="genre" :authorsList="authors"/>
     <div class="row w-75 justify-content-center py-4 m-auto">
-        
         <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0"
         v-for="(album, index) in filteredAlbumList" :key="index">
         <app-card :item="album"/>
@@ -76,9 +75,8 @@ export default {
         }).catch((error) => {
             console.log(error)
         }) 
-        },1000)
+        },2000)
     },    
- 
 }
 </script>
 
