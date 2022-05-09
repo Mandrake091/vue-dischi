@@ -2,7 +2,7 @@
 <section> 
     <app-loader v-if="loading"/>
  
-   <app-select @performSearch="mySearch" :genreList="genre"/>
+   <app-select @performSearch="mySearch" :genreList="genre" :authorsList="authors"/>
     <div class="row w-75 justify-content-center py-4 m-auto">
         
         <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0"
@@ -29,14 +29,22 @@ export default {
             api:'https://flynn.boolean.careers/exercises/api/array/music',
             loading:false,
             genre:[],
-            searchText:""
+            authors:[],
+            searchText:"",
+            mergedArray:[],
+        
+        
         }
     },
     methods:{
+ 
         mySearch(text){
-            this.searchText = text;
-        }
-        
+            this.loading=true
+        setTimeout(()=>{
+               this.searchText = text; 
+               this.loading=false
+            },1000)
+        }  
     },
        computed:{
         filteredAlbumList(){
@@ -44,10 +52,9 @@ export default {
                 return this.albumList;
         }
         return this.albumList.filter((item)=>{
-            return item.genre === this.searchText
+            return item.author === this.searchText || item.genre === this.searchText
         })
-    }
-},
+       }},
     created(){
         this.loading = true;
         setTimeout(()=>{
@@ -57,10 +64,15 @@ export default {
             this.albumList.forEach((el)=>{
                 if(!this.genre.includes(el.genre)){
                     this.genre.push(el.genre)
+                }else if (!this.authors.includes(el.author)){
+                    this.authors.push(el.author)
                 }
+                this.mergedArray= [...this.genre, ...this.authors]   
             })
             console.log(this.albumList)
             console.log(this.genre)
+            console.log(this.authors)
+            console.log(this.mergedArray)
         }).catch((error) => {
             console.log(error)
         }) 

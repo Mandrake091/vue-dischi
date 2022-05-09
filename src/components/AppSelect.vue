@@ -1,13 +1,31 @@
 <template>
- <select 
- class="form-select form-select-sm h-75 w-25 text-center m-auto mt-4" aria-label=".form-select-sm example"
+
+    <div class="container">
+        <div class="row pt-4 justify-content-center align-items-center">
+            <div class="col-4">
+                <select 
+ class="form-select form-select-sm text-center m-auto" aria-label=".form-select-sm example"
  @change="changeSelect"
  v-model="inputText"
  >
-  <option value="">Filter by genre</option>
-  <option :value="generi" 
-  v-for="(generi, index) in genreList"  :key="index">{{generi}}</option>
+  <option value="">Filter by Author</option>
+  <option :value="authors" 
+  v-for="(authors, index) in authorsList" :key="index">{{authors}}</option>
 </select>
+            </div>
+            <div class="col-4">
+                <select 
+ class="form-select form-select-sm text-center m-auto" aria-label=".form-select-sm example"
+ @change="changeSelect"
+ v-model="inputText"
+ >
+  <option value="">Filter by Genre</option>
+  <option :value="generi" 
+  v-for="(generi, index) in genreList" :key="index">{{generi}}</option>
+</select>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -18,11 +36,12 @@ export default {
             inputText:""
         }
     },
-    props:['genreList'],
-
-    methods:{
+    props:['genreList', 'authorsList'],
+   
+    methods:{      
         changeSelect(){
             this.$emit("performSearch", this.inputText)
+            console.log(this.inputText)
         }
     }
 }
