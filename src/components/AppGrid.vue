@@ -2,7 +2,7 @@
 <section> 
     <app-loader v-if="loading"/>
  
-   <app-select @performSearch="mySearch" :genreList="genre" :authorsList="authors"/>
+   <app-select v-if="!loading" @performSearch="mySearch" :genreList="genre" :authorsList="authors"/>
     <div class="row w-75 justify-content-center py-4 m-auto">
         <div class="col-12 col-sm-4 col-md-3 col-lg-2 p-0"
         v-for="(album, index) in filteredAlbumList" :key="index">
@@ -36,7 +36,6 @@ export default {
         }
     },
     methods:{
- 
         mySearch(text){
             this.loading=true
         setTimeout(()=>{
